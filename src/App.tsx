@@ -4,20 +4,20 @@ import React, { useState } from "react";
 import { addTodo } from "./store/todoSlice.ts";
 
 function App() {
-  const [newTodoTitle, setnewTodoTitle] = useState<string>("");
+  const [newTodoTitle, setNewTodoTitle] = useState<string>("");
 
   const todos = useAppSelector((state) => state.todos.todos);
   const dispatch = useAppDispatch();
 
   const onNewTodoTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setnewTodoTitle(e.target.value);
+    setNewTodoTitle(e.target.value);
   };
 
   const onTodoAdd = () => {
     dispatch(
       addTodo({ title: newTodoTitle, completed: false, id: todos.length })
     );
-    setnewTodoTitle("");
+    setNewTodoTitle("");
   };
 
   return (
